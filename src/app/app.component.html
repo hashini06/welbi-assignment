@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <div>
+      <a href="/" aria-current="page" class="brand w-nav-brand w--current" aria-label="home"><img
+          src="https://uploads-ssl.webflow.com/5b7db1b8967d853207bb4b0e/5d0a8666259ba947115252ec_welbi-logo-optimized.png"
+          height="46" alt="" class="welbi-logo"></a>
+      <a mat-button class="navigation" [routerLink]="['/',Paths.RESIDENTS_LIST]" [routerLinkActive]="['is-active-lg']">
+        Residents List
+      </a>
+      <a mat-button class="navigation" [routerLink]="['/',Paths.PROGRAMS_LIST]" [routerLinkActive]="['is-active-lg']">
+        Programs List
+      </a>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

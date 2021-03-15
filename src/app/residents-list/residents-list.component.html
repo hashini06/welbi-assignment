@@ -1,0 +1,47 @@
+<div class="container-detail offset-lg-2 col-lg-8 ">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Residents</h1>
+      <hr><br>
+    </div>
+    <div class="col-lg-12">
+      <mat-card *ngFor="let resident of residents" class="list-group-item">
+        <mat-card-header>
+          <div mat-card-avatar></div>
+          <mat-card-title>{{resident.name}}</mat-card-title>
+          <mat-card-subtitle>ID: {{resident.id}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <div class="row">
+            <div class="col-lg-4">
+              <img mat-card-image src="../assets/images/man-avatar.png" alt="{{resident.name}}" class="margin-left">
+            </div>
+            <div class="col-lg-8">
+              <table>
+                <tr>
+                  <td>Date of Birth</td>
+                  <td>: {{resident.birthDate["@ts"] | date}}</td>
+                </tr>
+                <tr>
+                  <td>Level of Care</td>
+                  <td>: {{resident.levelOfCare}}</td>
+                </tr>
+                <tr>
+                  <td>Status</td>
+                  <td>: {{resident.status}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button color="primary" (click)="$event.stopPropagation();$event.preventDefault()"
+            [routerLink]="['/',Paths.RESIDENTS_ATTENDENCE, resident.id]" class="btn btn-normal-detail-icon"
+            title="Schedule">
+            <i class="fa fa-calendar" aria-hidden="true"></i> Attendance
+          </button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+</div>

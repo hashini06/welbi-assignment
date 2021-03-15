@@ -1,0 +1,18 @@
+<div class="login-container offset-lg-4 col-lg-4 ">
+  <div class="row">
+    <div class="col-md-12 login-form-1">
+      <hr>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-group input-full-width">
+          <input matInput type="text" formControlName="email" placeholder="Email" required />
+          <mat-error *ngIf="submitted && f.email.errors?.required">
+            Email is required
+          </mat-error>
+        </mat-form-field>
+        <div class="form-group justify-content-center d-flex">
+          <button mat-raised-button color="primary" [disabled]="loading" class="btn btn-login">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
