@@ -1,3 +1,8 @@
+/*
+Developer - Hashini De Silva (hashinids@gmail.com)
+Date - 2021-03-16
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Paths } from './_utils/routes';
@@ -16,14 +21,7 @@ export class AppComponent {
   currentUser: User;
 
   constructor(private commonService: CommonService, private router: Router,) {
-    //this.loginComponent.currentUser.subscribe(x => this.currentUser = x);
-    console.log(this.currentUser)
   }
-
-  // ngOnInit() {
-  //   this.currentUser = this.commonService.getLocalStorage(this.commonService.USER_TOKEN);
-  //   console.log(this.currentUser)
-  // }
 
   logout() {
     this.commonService.clearLocalStorage();

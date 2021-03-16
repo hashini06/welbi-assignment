@@ -1,3 +1,8 @@
+/*
+Developer - Hashini De Silva (hashinids@gmail.com)
+Date - 2021-03-16
+*/
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';

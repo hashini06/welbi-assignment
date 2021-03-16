@@ -1,7 +1,11 @@
+/*
+Developer - Hashini De Silva (hashinids@gmail.com)
+Date - 2021-03-16
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { ApiService } from '../api/api.service';
@@ -19,13 +23,10 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  // currentUser: User;
-  // public currentUser: Observable<User>;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
     private apiService: ApiService<User>, private commonService: CommonService,
     private router: Router
-    //private authenticationService: AuthenticationService
   ) { }
 
   ngOnInit(): void {
@@ -39,7 +40,6 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     this.submitted = true;
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
       return;
     }

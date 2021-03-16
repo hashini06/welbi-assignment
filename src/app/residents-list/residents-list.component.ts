@@ -1,6 +1,10 @@
+/*
+Developer - Hashini De Silva (hashinids@gmail.com)
+Date - 2021-03-16
+*/
+
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-
 import { ApiService } from '../api/api.service';
 import { UserDetails } from '../_models/UserDetails';
 import { CommonService } from '../_services/common.service';

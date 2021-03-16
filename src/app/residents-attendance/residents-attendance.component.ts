@@ -1,10 +1,12 @@
+/*
+Developer - Hashini De Silva (hashinids@gmail.com)
+Date - 2021-03-16
+*/
+
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
-
 import { CommonService } from '../_services/common.service';
 
 export interface ResidentAttendance {
