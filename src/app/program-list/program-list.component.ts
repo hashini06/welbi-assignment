@@ -15,7 +15,7 @@ import { Paths } from '../_utils/routes';
 export class ProgramListComponent implements OnInit {
   programs: [];
   public Paths = Paths;
-  dataSource;
+  dataSource: MatTableDataSource<ProgramDetails>;
 
   constructor(private apiService: ApiService<ProgramDetails>, private commonService: CommonService) { }
 
@@ -24,7 +24,6 @@ export class ProgramListComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           this.commonService.setLocalStorage(this.commonService.PROGRAMS_DETAIL, data);
           this.programs = data;
           this.dataSource = new MatTableDataSource(this.programs);

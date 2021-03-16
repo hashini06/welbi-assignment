@@ -18,44 +18,50 @@
             Location is required
           </mat-error>
         </mat-form-field>
-        <div class="form-group input-full-width">
-          <mat-slide-toggle color="primary" (change)="onToggle($event)" [checked]="isAllDay">
-            All Day
-          </mat-slide-toggle>
+        <div class="row">
+          <div class="form-group col-lg-6 input-full-width">
+            <mat-slide-toggle color="primary" (change)="onToggle($event)" [checked]="isAllDay">
+              All Day
+            </mat-slide-toggle>
+          </div>
+          <div class="form-group col-lg-6 input-full-width">
+            <mat-slide-toggle color="primary" (change)="onToggleRepetaed($event)" [checked]="isRepeated">
+              Repeting
+            </mat-slide-toggle>
+          </div>
         </div>
-        <mat-form-field class="form-group col-lg-6 input-full-width">
-          <mat-label>Start Time</mat-label>
-          <input matInput type="time" id="start" formControlName="start" required>
-          <mat-error *ngIf="f.start.errors?.required" class="invalid-feedback">
-            Start Time is required
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field class="form-group col-lg-6 input-full-width">
-          <mat-label>End Time</mat-label>
-          <input matInput type="time" id="end" formControlName="end" required>
-          <mat-error *ngIf="f.end.errors?.required" class="invalid-feedback">
-            End Time is required
-          </mat-error>
+        <div class="row">
+          <mat-form-field class="form-group col-lg-6 input-full-width">
+            <mat-label>Start Time</mat-label>
+            <input matInput type="time" id="start" formControlName="start" required>
+            <mat-error *ngIf="f.start.errors?.required" class="invalid-feedback">
+              Start Time is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-group col-lg-6 input-full-width">
+            <mat-label>End Time</mat-label>
+            <input matInput type="time" id="end" formControlName="end" required>
+            <mat-error *ngIf="f.end.errors?.required" class="invalid-feedback">
+              End Time is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="form-group input-full-width">
+          <mat-label for="name">Dimension</mat-label>
+          <input matInput type="text" id="dimension" formControlName="dimension" class="addHeight30">
         </mat-form-field>
 
         <div formArrayName="tags" *ngFor="let item of programAddForm.get('tags')['controls']; let i = index;">
           <div [formGroupName]="i">
-            <input matInput formControlName="tags" placeholder="Tags">
+            <input matInput formControlName="tags" placeholder="Tags" class="addHeight30">
           </div>
         </div>
         <button mat-raised-button type="button" (click)="addItemTags()">Add Tags</button>
 
-
-        <mat-form-field class="form-group input-full-width">
-          <mat-label for="name">Dimension</mat-label>
-          <input matInput type="text" id="dimension" formControlName="dimension">
-        </mat-form-field>
-
-
         <div formArrayName="facilitators"
           *ngFor="let item of programAddForm.get('facilitators')['controls']; let i = index;">
           <div [formGroupName]="i">
-            <input matInput formControlName="facilitators" placeholder="Facilitators">
+            <input matInput formControlName="facilitators" placeholder="Facilitators" class="addHeight30 margin-top">
           </div>
         </div>
         <button mat-raised-button type="button" (click)="addItemFacilitators()">Add Facilitators</button>
@@ -63,23 +69,18 @@
         <div formArrayName="levelOfCare"
           *ngFor="let item of programAddForm.get('levelOfCare')['controls']; let i = index;">
           <div [formGroupName]="i">
-            <input matInput formControlName="levelOfCare" placeholder="Level Of Care">
+            <input matInput formControlName="levelOfCare" placeholder="Level Of Care" class="addHeight30 margin-top">
           </div>
         </div>
         <button mat-raised-button type="button" (click)="addItemLevelOfCare()">Add Level Of Care</button>
 
-
-        <div class="form-group input-full-width">
-          <mat-slide-toggle color="primary" (change)="onToggleRepetaed($event)" [checked]="isRepeated">
-            Repeting
-          </mat-slide-toggle>
-        </div>
         <div formArrayName="hobbies" *ngFor="let item of programAddForm.get('hobbies')['controls']; let i = index;">
           <div [formGroupName]="i">
-            <input matInput formControlName="hobbies" placeholder="Hobbies">
+            <input matInput formControlName="hobbies" placeholder="Hobbies" class="addHeight30 margin-top">
           </div>
         </div>
         <button mat-raised-button type="button" (click)="addItem()">Add Hobbies</button>
+
 
         <div class="form-group justify-content-center d-flex">
           <button mat-raised-button color="primary" type="button" class="btn" (click)="backClicked()">Cancel</button>

@@ -33,7 +33,21 @@ export class ProgramAddToResidentComponent implements OnInit {
         .find(x => x.id == params.id);
     });
 
-    this.programList = this.commonService.getLocalStorage(this.commonService.PROGRAMS_DETAIL)
+    if (this.commonService.getLocalStorage(this.commonService.PROGRAMS_DETAIL) == null
+      || this.commonService.getLocalStorage(this.commonService.PROGRAMS_DETAIL).length == 0) {
+      this.apiService.get("programs?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN))
+        .pipe(first())
+        .subscribe(
+          data => {
+            this.commonService.setLocalStorage(this.commonService.PROGRAMS_DETAIL, data);
+            this.programList = data;
+          },
+          error => {
+          });
+    } else {
+      this.programList = this.commonService.getLocalStorage(this.commonService.PROGRAMS_DETAIL);
+    }
+
     this.programAddToResidentForm = this.formBuilder.group({
       program: [''],
       residentId: ['', Validators.required],
@@ -59,7 +73,5 @@ export class ProgramAddToResidentComponent implements OnInit {
         },
         error => {
         });
-
   }
-
 }
