@@ -42,8 +42,6 @@ export class ResidentsAddComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.residentAddForm.value.name = this.residentAddForm.value.firstName + " " + this.residentAddForm.value.lastName
-    console.log(this.residentAddForm.value);
-    // return;
     this.apiService.post("residents?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN), this.residentAddForm.value)
       .pipe(first())
       .subscribe(

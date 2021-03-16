@@ -22,7 +22,6 @@ export class ResidentsListComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          console.log(data);
           this.commonService.setLocalStorage(this.commonService.RESIDENTS_DETAIL, data);
           this.residents = data;
         },
