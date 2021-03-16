@@ -56,55 +56,5 @@ export class LoginComponent implements OnInit {
         error => {
           this.loading = false;
         });
-
-
-
-
-    // const result = await this.authenticationService.login(this.f.email.value);
-    //if (result) {
-    //     const user = await result.user;
-    //     const idToken = await user.getIdToken();
-
-    //     this.authenticationService.login(idToken.toString())
-    //         .pipe(first())
-    //         .subscribe(
-    //             data => {
-    //                 this.currentUser = data;
-    //                 this.apiService.get(Endpoints.COUNTRIES)
-    //                     .pipe(first())
-    //                     .subscribe(
-    //                         data => {
-    //                             this.commonService.setLocalStorage(this.commonService.COUNTRIES, data);
-    //                         },
-    //                         error => {
-    //                             this.alertService.error(error);
-    //                         });
-    //                 //Load Roles at the begining and save in the local storage.
-    //                 this.apiService.get(Endpoints.ROLES)
-    //                     .pipe(first())
-    //                     .subscribe(
-    //                         data => {
-    //                             this.commonService.setLocalStorage(this.commonService.ROLES, data);
-    //                         },
-    //                         error => {
-    //                             this.alertService.error(error);
-    //                         });
-    //                 this.apiService.get(Endpoints.INSTITUTES)
-    //                     .pipe(first())
-    //                     .subscribe(
-    //                         data => {
-    //                             this.commonService.setLocalStorage(this.commonService.INSTITUTE, data);
-    //                             this.router.navigate([`/` + Paths.INSTITUTE_ROUTE]);
-    //                         },
-    //                         error => {
-    //                             this.alertService.error(error);
-    //                             this.loading = false;
-    //                         });
-    //             },
-    //             error => {
-    //                 this.alertService.error(error);
-    //                 this.loading = false;
-    //             });
-    // }
   }
 }

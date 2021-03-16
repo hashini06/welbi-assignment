@@ -1,0 +1,66 @@
+<div class="container-detail offset-lg-2 col-lg-8 ">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Add Resident</h1>
+      <hr>
+      <form [formGroup]="residentAddForm" (ngSubmit)="onSubmit()">
+        <div class="row">
+          <mat-form-field class="form-group col-lg-6 input-full-width">
+            <mat-label for="name">First Name</mat-label>
+            <input matInput type="text" id="firstName" formControlName="firstName" required>
+            <mat-error *ngIf="f.firstName.errors?.required">
+              First Name is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field class="form-group col-lg-6 input-full-width">
+            <mat-label for="name">Last Name</mat-label>
+            <input matInput type="text" id="lastName" formControlName="lastName" required>
+            <mat-error *ngIf="f.lastName.errors?.required" class="invalid-feedback">
+              Last Name is required
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <mat-form-field class="input-full-width form-group">
+          <mat-label>Room Number</mat-label>
+          <input matInput type="text" id="room" formControlName="room">
+        </mat-form-field>
+        <mat-form-field class="input-full-width form-group">
+          <mat-label>Level Of Care</mat-label>
+          <input matInput type="text" id="levelOfCare" formControlName="levelOfCare" required>
+          <mat-error *ngIf="f.levelOfCare.errors?.required" class="invalid-feedback">
+            Level Of Care is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-full-width form-group">
+          <mat-label>Ambulation</mat-label>
+          <input matInput type="text" id="ambulation" formControlName="ambulation" required>
+          <mat-error *ngIf="f.ambulation.errors?.required" class="invalid-feedback">
+            Ambulation is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-full-width form-group">
+          <mat-label>Date of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" id="birthDate" formControlName="birthDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="f.birthDate.errors?.required" class="invalid-feedback">
+            Date of Birth is required
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="input-full-width form-group">
+          <mat-label>Move in Date</mat-label>
+          <input matInput [matDatepicker]="picker1" id="moveInDate" formControlName="moveInDate" required>
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error *ngIf="f.moveInDate.errors?.required" class="invalid-feedback">
+            Move in Date is required
+          </mat-error>
+        </mat-form-field>
+        <div class="form-group justify-content-center d-flex">
+          <button mat-raised-button color="primary" type="button" class="btn" (click)="backClicked()">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

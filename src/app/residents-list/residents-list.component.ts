@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
 import { ApiService } from '../api/api.service';
-import { User } from '../_models/user';
+import { UserDetails } from '../_models/UserDetails';
 import { CommonService } from '../_services/common.service';
 import { Paths } from '../_utils/routes';
 
@@ -15,7 +15,7 @@ export class ResidentsListComponent implements OnInit {
   residents: [];
   public Paths = Paths;
 
-  constructor(private apiService: ApiService<User>, private commonService: CommonService) { }
+  constructor(private apiService: ApiService<UserDetails>, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.apiService.get("residents?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN))
@@ -27,8 +27,6 @@ export class ResidentsListComponent implements OnInit {
           this.residents = data;
         },
         error => {
-          // this.alertService.error(error);
-          // this.loading = false;
         });
   }
 

@@ -4,6 +4,10 @@
       <h1>Residents</h1>
       <hr><br>
     </div>
+    <button [routerLink]="['/',Paths.RESIDENT_ADD]" mat-fab color="primary" id="add-button-resident"
+      matTooltip="Add Resident">
+      <mat-icon>add</mat-icon>
+    </button>
     <div class="col-lg-12">
       <mat-card *ngFor="let resident of residents" class="list-group-item">
         <mat-card-header>
@@ -35,10 +39,15 @@
           </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-button color="primary" (click)="$event.stopPropagation();$event.preventDefault()"
-            [routerLink]="['/',Paths.RESIDENTS_ATTENDENCE, resident.id]" class="btn btn-normal-detail-icon"
-            title="Schedule">
-            <i class="fa fa-calendar" aria-hidden="true"></i> Attendance
+          <button mat-raised-button color="primary" color="primary"
+            (click)="$event.stopPropagation();$event.preventDefault()"
+            [routerLink]="['/',Paths.RESIDENTS_ATTENDENCE, resident.id]" class="btn" title="Attendance">
+            Attendance
+          </button>
+          <button mat-raised-button color="primary" color="primary"
+            (click)="$event.stopPropagation();$event.preventDefault()"
+            [routerLink]="['/',Paths.RESIDENTS_ATTENDENCE, resident.id]" class="btn" title="Assign Program">
+            Assign Program
           </button>
         </mat-card-actions>
       </mat-card>

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
-import {MatTableDataSource} from '@angular/material/table';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { ApiService } from '../api/api.service';
-import { User } from '../_models/user';
+import { ProgramDetails } from '../_models/programDetails';
 import { CommonService } from '../_services/common.service';
 import { Paths } from '../_utils/routes';
 
@@ -17,7 +17,7 @@ export class ProgramListComponent implements OnInit {
   public Paths = Paths;
   dataSource;
 
-  constructor(private apiService: ApiService<User>, private commonService: CommonService) { }
+  constructor(private apiService: ApiService<ProgramDetails>, private commonService: CommonService) { }
 
   ngOnInit(): void {
     this.apiService.get("programs?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN))
@@ -30,8 +30,6 @@ export class ProgramListComponent implements OnInit {
           this.dataSource = new MatTableDataSource(this.programs);
         },
         error => {
-          // this.alertService.error(error);
-          // this.loading = false;
         });
   }
 

@@ -5,6 +5,8 @@ import { ResidentsListComponent } from './residents-list/residents-list.componen
 import { ResidentsAttendanceComponent } from './residents-attendance/residents-attendance.component';
 import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramAttendanceComponent } from './program-attendance/program-attendance.component';
+import { ProgramAddComponent } from './program-add/program-add.component';
+import { ResidentsAddComponent } from './residents-add/residents-add.component';
 import { Paths } from './_utils/routes';
 
 const routes: Routes = [
@@ -13,6 +15,9 @@ const routes: Routes = [
   { path: Paths.RESIDENTS_ATTENDENCE + `/:id`, component: ResidentsAttendanceComponent },
   { path: Paths.PROGRAMS_LIST, component: ProgramListComponent },
   { path: Paths.PROGRAMS_ATTENDENCE + `/:id`, component: ProgramAttendanceComponent },
+  { path: Paths.RESIDENT_ADD, component: ResidentsAddComponent },
+  { path: Paths.PROGRAM_ADD, component: ProgramAddComponent },
+
 ];
 
 @NgModule({
