@@ -46,7 +46,7 @@
           </button>
           <button mat-raised-button color="primary" color="primary"
             (click)="$event.stopPropagation();$event.preventDefault()"
-            [routerLink]="['/',Paths.RESIDENTS_ATTENDENCE, resident.id]" class="btn" title="Assign Program">
+            [routerLink]="['/',Paths.PROGRAM_ADD_TO_RESIDENT, resident.id]" class="btn" title="Assign Program">
             Assign Program
           </button>
         </mat-card-actions>

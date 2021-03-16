@@ -13,6 +13,7 @@ import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramAttendanceComponent } from './program-attendance/program-attendance.component';
 import { ProgramAddComponent } from './program-add/program-add.component';
 import { ResidentsAddComponent } from './residents-add/residents-add.component';
+import { ProgramAddToResidentComponent } from './program-add-to-resident/program-add-to-resident.component';
 
 //MATERIAL
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,6 +67,7 @@ import { OverlayModule } from '@angular/cdk/overlay';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -75,7 +77,8 @@ import { OverlayModule } from '@angular/cdk/overlay';
     ProgramListComponent,
     ProgramAttendanceComponent,
     ProgramAddComponent,
-    ResidentsAddComponent
+    ResidentsAddComponent,
+    ProgramAddToResidentComponent
   ],
   imports: [
     BrowserModule,

@@ -5,5 +5,6 @@ export class Paths {
     public static readonly PROGRAMS_LIST = "programList";
     public static readonly PROGRAMS_ATTENDENCE = "programAttendance";
     public static readonly PROGRAM_ADD = "programAdd";
+    public static readonly PROGRAM_ADD_TO_RESIDENT = "programAddToResident";
     public static readonly LOGOUT = "logout";
 }

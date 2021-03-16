@@ -17,10 +17,14 @@ import { Hobbies } from '../_models/hobbies';
 export class ProgramAddComponent implements OnInit {
 
   programAddForm: FormGroup;
-  submitted = false;
-  isAllDay = false;
-  isRepeated = false;
-  hobbies = [];
+  submitted: Boolean = false;
+  isAllDay: Boolean = false;
+  isRepeated: Boolean = false;
+  hobbiesForm: FormGroup;
+  hobbies: FormArray;
+  levelOfCare: FormArray;
+  tags: FormArray;
+  facilitators: FormArray;
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService<ProgramDetails>,
     private commonService: CommonService, private router: Router, private _location: Location) { }
@@ -30,20 +34,62 @@ export class ProgramAddComponent implements OnInit {
     this.programAddForm = this.formBuilder.group({
       name: ['', Validators.required],
       location: ['', Validators.required],
-      allDay: ['', Validators.required],
+      allDay: [false, Validators.required],
       start: ['', Validators.required],
       end: ['', Validators.required],
-      tags: ['', Validators.required],
-      dimension: [''],
-      facilitators: [''],
-      levelOfCare: [''],
-      hobbies: [],
-      isRepeated: ['']
+      tags: this.formBuilder.array([this.createTags()]),
+      dimension: ['', Validators.required],
+      facilitators: this.formBuilder.array([this.createFacilitators()]),
+      levelOfCare: this.formBuilder.array([this.createLevelOfCare()]),
+      isRepeated: [false],
+      hobbies: this.formBuilder.array([this.createHobbies()])
     });
   }
 
-  get hobbies_() {
-    return this.programAddForm.get("alias") as FormArray;
+  createHobbies(): FormGroup {
+    return this.formBuilder.group({
+      hobbies: ''
+    });
+  }
+
+  addItem(): void {
+    this.hobbies = this.programAddForm.get('hobbies') as FormArray;
+    this.hobbies.push(this.createHobbies());
+  }
+
+
+  createLevelOfCare(): FormGroup {
+    return this.formBuilder.group({
+      levelOfCare: ''
+    });
+  }
+
+  addItemLevelOfCare(): void {
+    this.levelOfCare = this.programAddForm.get('levelOfCare') as FormArray;
+    this.levelOfCare.push(this.createLevelOfCare());
+  }
+
+  createTags(): FormGroup {
+    return this.formBuilder.group({
+      tags: ''
+    });
+  }
+
+  addItemTags(): void {
+    this.tags = this.programAddForm.get('tags') as FormArray;
+    this.tags.push(this.createTags());
+  }
+
+
+  createFacilitators(): FormGroup {
+    return this.formBuilder.group({
+      facilitators: ''
+    });
+  }
+
+  addItemFacilitators(): void {
+    this.facilitators = this.programAddForm.get('facilitators') as FormArray;
+    this.facilitators.push(this.createFacilitators());
   }
 
   get f() {
@@ -52,11 +98,11 @@ export class ProgramAddComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-
-    // this.programAddForm.value.name = this.programAddForm.value.firstName + " " + this.programAddForm.value.lastName
-    // this.programAddForm.controls.hobbies = [];
-    console.log(this.programAddForm.value);
-    // return;
+    let currentDate = new Date();
+    //
+    this.programAddForm.value.start = new Date(currentDate.getFullYear() + "-" + currentDate.getMonth() + "-" + currentDate.getDate() + " " + this.programAddForm.value.start).toISOString();
+    this.programAddForm.value.end = new Date(currentDate.getFullYear() + "-" + currentDate.getMonth() + "-" + currentDate.getDate() + " " + this.programAddForm.value.end).toISOString();
+    return;
     this.apiService.post("programs?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN), this.programAddForm.value)
       .pipe(first())
       .subscribe(

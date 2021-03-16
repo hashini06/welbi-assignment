@@ -1,0 +1,29 @@
+<div class="container-detail offset-lg-2 col-lg-8 ">
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Add Program for {{residentAttendanceDetails.name}}</h1>
+      <hr>
+      <form [formGroup]="programAddToResidentForm" (ngSubmit)="onSubmit()">
+        <mat-form-field class="form-group input-full-width">
+          <mat-label>Program List</mat-label>
+          <mat-select formControlName="program">
+            <mat-option *ngFor="let program of programList; let i = index" [value]="program.id">
+              {{program.name}} {{program.id}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field class="form-group input-full-width">
+          <mat-label for="name">Status</mat-label>
+          <input matInput type="text" id="status" formControlName="status" required>
+          <mat-error *ngIf="f.status.errors?.required" class="invalid-feedback">
+            Status is required
+          </mat-error>
+        </mat-form-field>
+        <div class="form-group justify-content-center d-flex">
+          <button mat-raised-button color="primary" type="button" class="btn" (click)="backClicked()">Cancel</button>
+          <button mat-raised-button color="primary" type="submit" class="btn">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,7 @@ import { ProgramListComponent } from './program-list/program-list.component';
 import { ProgramAttendanceComponent } from './program-attendance/program-attendance.component';
 import { ProgramAddComponent } from './program-add/program-add.component';
 import { ResidentsAddComponent } from './residents-add/residents-add.component';
+import { ProgramAddToResidentComponent } from './program-add-to-resident/program-add-to-resident.component';
 import { Paths } from './_utils/routes';
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: Paths.PROGRAMS_ATTENDENCE + `/:id`, component: ProgramAttendanceComponent },
   { path: Paths.RESIDENT_ADD, component: ResidentsAddComponent },
   { path: Paths.PROGRAM_ADD, component: ProgramAddComponent },
+  { path: Paths.PROGRAM_ADD_TO_RESIDENT + `/:id`, component: ProgramAddToResidentComponent },
 
 ];
 

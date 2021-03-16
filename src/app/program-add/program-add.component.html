@@ -38,36 +38,49 @@
           </mat-error>
         </mat-form-field>
 
-        <mat-form-field class="form-group input-full-width">
-          <mat-label for="name">Tags</mat-label>
-          <input matInput type="text" id="tags" formControlName="tags" required>
-          <mat-error *ngIf="f.tags.errors?.required">
-            Tag is required
-          </mat-error>
-        </mat-form-field>
+        <div formArrayName="tags" *ngFor="let item of programAddForm.get('tags')['controls']; let i = index;">
+          <div [formGroupName]="i">
+            <input matInput formControlName="tags" placeholder="Tags">
+          </div>
+        </div>
+        <button mat-raised-button type="button" (click)="addItemTags()">Add Tags</button>
+
+
         <mat-form-field class="form-group input-full-width">
           <mat-label for="name">Dimension</mat-label>
           <input matInput type="text" id="dimension" formControlName="dimension">
         </mat-form-field>
-        <mat-form-field class="form-group input-full-width">
-          <mat-label for="name">Facilitators</mat-label>
-          <input matInput type="text" id="facilitators" formControlName="facilitators">
-        </mat-form-field>
-        <mat-form-field class="form-group input-full-width">
-          <mat-label for="name">Level Of Care</mat-label>
-          <input matInput type="text" id="levelOfCare" formControlName="levelOfCare">
-        </mat-form-field>
-        <mat-form-field class="form-group input-full-width">
-          <mat-label for="name">Hobbies</mat-label>
-          <input matInput type="text" id="hobbies" formControlName="hobbies">
-          <!-- <button type="button" (click)="addNameField()" class="btn btn-success">Add More Names</button> -->
 
-        </mat-form-field>
+
+        <div formArrayName="facilitators"
+          *ngFor="let item of programAddForm.get('facilitators')['controls']; let i = index;">
+          <div [formGroupName]="i">
+            <input matInput formControlName="facilitators" placeholder="Facilitators">
+          </div>
+        </div>
+        <button mat-raised-button type="button" (click)="addItemFacilitators()">Add Facilitators</button>
+
+        <div formArrayName="levelOfCare"
+          *ngFor="let item of programAddForm.get('levelOfCare')['controls']; let i = index;">
+          <div [formGroupName]="i">
+            <input matInput formControlName="levelOfCare" placeholder="Level Of Care">
+          </div>
+        </div>
+        <button mat-raised-button type="button" (click)="addItemLevelOfCare()">Add Level Of Care</button>
+
+
         <div class="form-group input-full-width">
           <mat-slide-toggle color="primary" (change)="onToggleRepetaed($event)" [checked]="isRepeated">
             Repeting
           </mat-slide-toggle>
         </div>
+        <div formArrayName="hobbies" *ngFor="let item of programAddForm.get('hobbies')['controls']; let i = index;">
+          <div [formGroupName]="i">
+            <input matInput formControlName="hobbies" placeholder="Hobbies">
+          </div>
+        </div>
+        <button mat-raised-button type="button" (click)="addItem()">Add Hobbies</button>
+
         <div class="form-group justify-content-center d-flex">
           <button mat-raised-button color="primary" type="button" class="btn" (click)="backClicked()">Cancel</button>
           <button mat-raised-button color="primary" type="submit" class="btn">Submit</button>
