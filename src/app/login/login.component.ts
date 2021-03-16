@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { BehaviorSubject, Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
 import { ApiService } from '../api/api.service';
@@ -19,8 +19,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   returnUrl: string;
-  currentUser: User;
-
+  // currentUser: User;
+  // public currentUser: Observable<User>;
 
   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute,
     private apiService: ApiService<User>, private commonService: CommonService,

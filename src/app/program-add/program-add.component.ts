@@ -21,10 +21,6 @@ export class ProgramAddComponent implements OnInit {
   isAllDay: Boolean = false;
   isRepeated: Boolean = false;
   hobbiesForm: FormGroup;
-  hobbies: FormArray;
-  levelOfCare: FormArray;
-  tags: FormArray;
-  facilitators: FormArray;
 
   constructor(private formBuilder: FormBuilder, private apiService: ApiService<ProgramDetails>,
     private commonService: CommonService, private router: Router, private _location: Location) { }
@@ -37,59 +33,60 @@ export class ProgramAddComponent implements OnInit {
       allDay: [false, Validators.required],
       start: ['', Validators.required],
       end: ['', Validators.required],
-      tags: this.formBuilder.array([this.createTags()]),
+      tags: new FormArray([
+        new FormControl('', Validators.required),
+      ]),
       dimension: ['', Validators.required],
-      facilitators: this.formBuilder.array([this.createFacilitators()]),
-      levelOfCare: this.formBuilder.array([this.createLevelOfCare()]),
+      facilitators: new FormArray([
+        new FormControl('', Validators.required),
+      ]),
+      levelOfCare: new FormArray([
+        new FormControl('', Validators.required),
+      ]),
       isRepeated: [false],
-      hobbies: this.formBuilder.array([this.createHobbies()])
+      hobbies: new FormArray([
+        new FormControl('', Validators.required),
+      ])
     });
   }
 
-  createHobbies(): FormGroup {
-    return this.formBuilder.group({
-      hobbies: ''
-    });
+  /* Hobbies */
+  get hobbies(): FormArray {
+    return this.programAddForm.get('hobbies') as FormArray;
   }
 
-  addItem(): void {
-    this.hobbies = this.programAddForm.get('hobbies') as FormArray;
-    this.hobbies.push(this.createHobbies());
+  addHobbies() {
+    this.hobbies.push(new FormControl('', Validators.required));
   }
 
+  /* Tags */
 
-  createLevelOfCare(): FormGroup {
-    return this.formBuilder.group({
-      levelOfCare: ''
-    });
+  get tags(): FormArray {
+    return this.programAddForm.get('tags') as FormArray;
   }
 
-  addItemLevelOfCare(): void {
-    this.levelOfCare = this.programAddForm.get('levelOfCare') as FormArray;
-    this.levelOfCare.push(this.createLevelOfCare());
+  addItemTags() {
+    this.tags.push(new FormControl('', Validators.required));
   }
 
-  createTags(): FormGroup {
-    return this.formBuilder.group({
-      tags: ''
-    });
+  /* Facilitators */
+
+  get facilitators(): FormArray {
+    return this.programAddForm.get('facilitators') as FormArray;
   }
 
-  addItemTags(): void {
-    this.tags = this.programAddForm.get('tags') as FormArray;
-    this.tags.push(this.createTags());
+  addItemFacilitators() {
+    this.facilitators.push(new FormControl('', Validators.required));
   }
 
+  /* Level Of Care */
 
-  createFacilitators(): FormGroup {
-    return this.formBuilder.group({
-      facilitators: ''
-    });
+  get levelOfCare(): FormArray {
+    return this.programAddForm.get('levelOfCare') as FormArray;
   }
 
-  addItemFacilitators(): void {
-    this.facilitators = this.programAddForm.get('facilitators') as FormArray;
-    this.facilitators.push(this.createFacilitators());
+  addItemLevelOfCare() {
+    this.levelOfCare.push(new FormControl('', Validators.required));
   }
 
   get f() {
@@ -102,7 +99,7 @@ export class ProgramAddComponent implements OnInit {
     //
     this.programAddForm.value.start = new Date(currentDate.getFullYear() + "-" + currentDate.getMonth() + "-" + currentDate.getDate() + " " + this.programAddForm.value.start).toISOString();
     this.programAddForm.value.end = new Date(currentDate.getFullYear() + "-" + currentDate.getMonth() + "-" + currentDate.getDate() + " " + this.programAddForm.value.end).toISOString();
-    return;
+    // return;
     this.apiService.post("programs?token=" + this.commonService.getLocalStorage(this.commonService.USER_TOKEN), this.programAddForm.value)
       .pipe(first())
       .subscribe(
@@ -126,5 +123,9 @@ export class ProgramAddComponent implements OnInit {
     this.isAllDay = event.checked;
     this.programAddForm.value.isAllDay = this.isAllDay;
   }
+
+
+
+
 
 }

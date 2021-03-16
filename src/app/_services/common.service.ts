@@ -24,8 +24,4 @@ export class CommonService {
     clearLocalStorage() {
         localStorage.clear();
     }
-
-
-
-
 }

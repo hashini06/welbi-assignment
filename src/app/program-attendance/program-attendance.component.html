@@ -9,7 +9,7 @@
         <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
       </mat-form-field>
 
-      <div class="mat-elevation-z8">
+      <div>
         <table mat-table [dataSource]="dataSource">
           <ng-container matColumnDef="residentId">
             <th mat-header-cell *matHeaderCellDef> Resident ID </th>
@@ -23,6 +23,9 @@
           <tr mat-row *matRowDef="let row; columns: displayedColumns;">
           </tr>
         </table>
+        <div class="form-group justify-content-center d-flex margin-top">
+          <button mat-raised-button color="primary" type="button" (click)="backClicked()" class="btn">Back</button>
+        </div>
       </div>
     </div>
   </div>

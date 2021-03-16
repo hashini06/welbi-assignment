@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
+import { Location } from '@angular/common';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -24,7 +24,7 @@ export class ResidentsAttendanceComponent implements OnInit {
   dataSource: MatTableDataSource<ResidentAttendance>;
   displayedColumns: string[] = ['programId', 'status'];
 
-  constructor(private route: ActivatedRoute, private commonService: CommonService) { }
+  constructor(private route: ActivatedRoute, private commonService: CommonService, private _location: Location) { }
 
   ngOnInit(): void {
     this.sub = this.route.params.subscribe(params => {
@@ -38,5 +38,10 @@ export class ResidentsAttendanceComponent implements OnInit {
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
+
+  backClicked() {
+    this._location.back();
+  }
+
 
 }

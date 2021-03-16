@@ -50,38 +50,44 @@
           <mat-label for="name">Dimension</mat-label>
           <input matInput type="text" id="dimension" formControlName="dimension" class="addHeight30">
         </mat-form-field>
-
-        <div formArrayName="tags" *ngFor="let item of programAddForm.get('tags')['controls']; let i = index;">
-          <div [formGroupName]="i">
-            <input matInput formControlName="tags" placeholder="Tags" class="addHeight30">
+        <div formArrayName="tags">
+          <div *ngFor="let name of tags.controls; index as tagsIndex" class="form-group">
+            <input matInput [formControlName]="tagsIndex" placeholder="Tags" class="addHeight30 margin-top">
           </div>
+          <button mat-raised-button color="accent" type="button" class="addBtn" (click)="addItemTags()">
+            <mat-icon>add</mat-icon>
+            Tags
+          </button>
         </div>
-        <button mat-raised-button type="button" (click)="addItemTags()">Add Tags</button>
-
-        <div formArrayName="facilitators"
-          *ngFor="let item of programAddForm.get('facilitators')['controls']; let i = index;">
-          <div [formGroupName]="i">
-            <input matInput formControlName="facilitators" placeholder="Facilitators" class="addHeight30 margin-top">
+        <div formArrayName="facilitators">
+          <div *ngFor="let name of facilitators.controls; index as facilitatorsIndex" class="form-group">
+            <input matInput [formControlName]="facilitatorsIndex" placeholder="Facilitators"
+              class="addHeight30 margin-top">
           </div>
+          <button mat-raised-button color="accent" type="button" class="addBtn" (click)="addItemFacilitators()">
+            <mat-icon>add</mat-icon>
+            Facilitators
+          </button>
         </div>
-        <button mat-raised-button type="button" (click)="addItemFacilitators()">Add Facilitators</button>
-
-        <div formArrayName="levelOfCare"
-          *ngFor="let item of programAddForm.get('levelOfCare')['controls']; let i = index;">
-          <div [formGroupName]="i">
-            <input matInput formControlName="levelOfCare" placeholder="Level Of Care" class="addHeight30 margin-top">
+        <div formArrayName="levelOfCare">
+          <div *ngFor="let name of levelOfCare.controls; index as levelOfCareIndex" class="form-group">
+            <input matInput [formControlName]="levelOfCareIndex" placeholder="Level Of Care"
+              class="addHeight30 margin-top">
           </div>
+          <button mat-raised-button color="accent" type="button" class="addBtn" (click)="addItemLevelOfCare()">
+            <mat-icon>add</mat-icon>
+            Level Of Care
+          </button>
         </div>
-        <button mat-raised-button type="button" (click)="addItemLevelOfCare()">Add Level Of Care</button>
-
-        <div formArrayName="hobbies" *ngFor="let item of programAddForm.get('hobbies')['controls']; let i = index;">
-          <div [formGroupName]="i">
-            <input matInput formControlName="hobbies" placeholder="Hobbies" class="addHeight30 margin-top">
+        <div formArrayName="hobbies">
+          <div *ngFor="let name of hobbies.controls; index as hobbiesIndex" class="form-group">
+            <input matInput [formControlName]="hobbiesIndex" placeholder="Hobbies" class="addHeight30 margin-top">
           </div>
+          <button mat-raised-button color="accent" type="button" class="addBtn" (click)="addHobbies()">
+            <mat-icon>add</mat-icon>
+            Hobbies
+          </button>
         </div>
-        <button mat-raised-button type="button" (click)="addItem()">Add Hobbies</button>
-
-
         <div class="form-group justify-content-center d-flex">
           <button mat-raised-button color="primary" type="button" class="btn" (click)="backClicked()">Cancel</button>
           <button mat-raised-button color="primary" type="submit" class="btn">Add Program</button>

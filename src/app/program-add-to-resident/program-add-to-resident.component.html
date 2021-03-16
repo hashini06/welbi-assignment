@@ -8,7 +8,7 @@
           <mat-label>Program List</mat-label>
           <mat-select formControlName="program">
             <mat-option *ngFor="let program of programList; let i = index" [value]="program.id">
-              {{program.name}} {{program.id}}
+              {{program.name}}
             </mat-option>
           </mat-select>
         </mat-form-field>
